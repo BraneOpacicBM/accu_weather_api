@@ -1,2 +1,4 @@
 .App {
-  color: blue; }
+  text-align: center;
+  color: blue;
+  border: 12px solid teal; }
