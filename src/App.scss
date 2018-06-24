@@ -1,5 +1,14 @@
+@import "./src/partials/variables";
+
+body {
+  background: $main-sectionColor;
+}
+
 .App {
+  font-family: $font-stack;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   width: 100%;
-  color: gray;
-  border: 2px solid purple;
+  height: 100%;
  }

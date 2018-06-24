@@ -1,0 +1,10 @@
+@import '../../partials/variables';
+
+.Navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-stack;
+    background-color: $navbar-color;
+    padding: 10px 0; 
+}
