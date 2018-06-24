@@ -1,0 +1,90 @@
+@import '../../../partials/variables';
+
+.WeatherCard {
+    
+    border-radius: 3px;
+    background: $card-bgColor;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .leftInfo,
+    .midInfo,
+    .rightInfo {
+        
+        flex: 1;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .leftInfo {
+        h4.cityName {
+            color: $card-mainColor;
+            margin: 0;
+        }
+
+        p.cityDate {
+            color: $card-subColor;
+            margin: 0;
+            font-size: 12px;
+        }
+    }
+
+    .midInfo {
+        flex: 2;
+        margin: 0 10px;
+        padding: 0 20px;
+        position: relative;
+
+        .temperatureDegree,
+        .temperatureMark {
+            font-size: 14px;
+            color: $card-subColor;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+
+        .temperatureDegree {
+            top: 3px;
+            right: 8px;
+        }
+
+        h4.cityTemp {
+            color: $card-mainColor;
+            margin: 0;
+            line-height: 0.8;
+            font-size: 34px;
+        }
+
+        p.cityWeatherInfo {
+            color: $card-subColor;
+            margin: 0;
+            font-size: 10px;
+        }
+    }
+
+    .rightInfo {
+
+        p.cityHumidity {
+            color: $card-subColor;
+            margin: 0;
+            font-size: 12px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        p.cityWind {
+            color: $card-subColor;
+            margin: 0;
+            font-size: 12px;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

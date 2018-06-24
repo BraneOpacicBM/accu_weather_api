@@ -1,0 +1,26 @@
+@import '../../../partials/variables';
+
+.InputField {
+    flex: 1;
+    min-width: 20%;
+
+    form {
+        height: 100%;
+    }
+
+    .inputArea {
+        background: transparent;
+        display: block;
+        height: 100%;
+        width: 100%;
+        border: none;
+        color: $input-btnTextColor;
+        font-size: 24px;
+        
+    }
+
+    .inputArea:focus {
+        border: none;
+        outline: none;
+    }
+}
