@@ -1,0 +1,17 @@
+@import '../../../partials/variables';
+
+.InputHolder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 60%;
+    padding: 5px 5px;
+    background: $input-color;
+
+    .btnWrapper {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}
