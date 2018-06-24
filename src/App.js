@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import classes from './App.css';
+import './App.scss';
 
 
 
 class App extends Component {
   render() {
     return (
-      <div className={classes.App}>
+      <div className="App">
         <h1>Hello World</h1>
       </div>
-    )
+    );
   }
 }
 

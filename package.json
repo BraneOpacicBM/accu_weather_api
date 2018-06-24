@@ -47,11 +47,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/sass/main.scss -o src/css/ --source-map true",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive --usePolling --polling-interval 500",
-    "start-js": "node scripts/start.js",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && node scripts/build.js",
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
@@ -61,7 +58,9 @@
     "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.9.1"
+    "eslint-plugin-react": "^7.9.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3"
   },
   "jest": {
     "collectCoverageFrom": [
