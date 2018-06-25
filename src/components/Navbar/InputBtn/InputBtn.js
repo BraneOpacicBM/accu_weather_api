@@ -7,7 +7,7 @@ const InputBtn = (props) => {
     return (
         <div className="InputBtn">
             <div className="BtnWrapper">
-                <div className="InputBtnText">INPUT</div>
+                <div className="InputBtnText">{props.cityName}</div>
                 <div className="InputBtnClose">
                     <FontAwesomeIcon icon={faTimes}/>
                 </div>
