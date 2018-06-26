@@ -10,15 +10,18 @@ class MainArea extends Component {
         return Math.floor(celsius);
       }
       
-      dateRender = date => {
-        const monthNames = [
-        "January", "February", "March",
-        "April", "May", "June", "July",
-        "August", "September", "October",
-        "November", "December"
-      ];
-        const month = monthNames[date.getMonth()];
-        let day = date.getDate();
+
+    dateRender = (date) => {
+        const a = new Date(date * 1000);
+        const months = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+          ];
+        
+        const month = months[a.getMonth()];
+        let day = a.getDate();
         if( day === 1) {
             day += "st";
         } else if (day === 2) {
@@ -28,9 +31,10 @@ class MainArea extends Component {
         } else {
             day += "th";
         }
-    
+        
+        
         return month + " " + day;
-    }
+ }
 
     render() {
 
