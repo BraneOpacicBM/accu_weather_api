@@ -23,10 +23,14 @@ class InputHolder extends Component {
     formHandler = (e) => {
         e.preventDefault();
         if(this.state.inputValue.trim() !== "" && this.state.inputValue.length > 1){
-            this.props.getCityWeather(this.state.inputValue)
-            this.setState({
-                inputValue: ""
-            })
+            let cities = this.state.inputValue.split(",").map(Function.prototype.call, String.prototype.trim);
+            if([].concat(cities).sort().reverse().pop() !== "") {
+                this.props.getCityWeather(cities)
+                this.setState({
+                    inputValue: ""
+                })
+            }
+            
         }
     }
 
@@ -69,7 +73,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCityWeather: (city) => dispatch(asyncCityWeather(city))
+        getCityWeather: (cities) => dispatch(asyncCityWeather(cities))
     }
 }
 
