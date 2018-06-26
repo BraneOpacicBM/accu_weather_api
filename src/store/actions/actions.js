@@ -11,7 +11,14 @@ export const asyncCityWeather = (city) => {
 
         fetch(urlAPI)
             .then(response => response.json())
-            .then(parsedRes => dispatch(cityWeather(parsedRes)))
-            .catch(err => console.log(err))
+            .then(parsedRes => {
+                if(parsedRes.cod !== "404"){
+                    dispatch(cityWeather(parsedRes))
+                } else {
+                    alert("City not found!")
+                }
+            })
+            .catch(err => alert(err))
+            
     }
 }
