@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import WeatherCard from './WeatherCard/WeatherCard';
 import './MainArea.scss';
+import { asyncCityWeatherDetailed } from '../../store/actions/actions';
 
 class MainArea extends Component {
+
+
+    getDetailedViewHandler = (cityName) => {
+        this.props.cityWeatherDetailed(cityName);
+    }
 
      ktc = kelvin => {
         let celsius = kelvin - 273.15;
@@ -49,7 +55,9 @@ class MainArea extends Component {
                 humidity={cityInfo.main.humidity}
                 temp={this.ktc(cityInfo.main.temp)}
                 date={this.dateRender(new Date(cityInfo.dt))} 
-                id={cityInfo.id} />
+                id={cityInfo.id}
+                detailedView={() => this.getDetailedViewHandler(cityInfo.name)}
+                />
             })
         }
 
@@ -67,4 +75,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(MainArea);
+const mapDispatchToProps = dispatch => {
+    return {
+        cityWeatherDetailed: (cityName) => dispatch(asyncCityWeatherDetailed(cityName))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainArea);

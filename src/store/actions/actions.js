@@ -5,6 +5,13 @@ export const cityWeather = (data) => {
     }
 }
 
+export const cityWeatherDetailed = (city) => {
+    return {
+        type: 'CITY_WEATHER_DETAILED',
+        city: city
+    }
+}
+
 
 
 export const asyncCityWeather = (cities) => {
@@ -39,6 +46,20 @@ export const asyncCityWeather = (cities) => {
                 // handle errors here
             });
  
+    }
+}
+
+export const asyncCityWeatherDetailed = (city) => {
+
+    return dispatch => {
+        const urlAPIdetailed = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=ca360ee30cde9d947421fc290e085dbb";
+
+    fetch(urlAPIdetailed)
+        .then(response => response.json())
+        .then(parsedRes => {
+            dispatch(cityWeatherDetailed(parsedRes))
+        })
+        .catch(err => console.log(err))
     }
 }
 
