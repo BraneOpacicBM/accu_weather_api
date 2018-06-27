@@ -1,7 +1,9 @@
 @import '../../../partials/variables';
+@import '../../../partials/mixins';
 
 .WeatherCard {
-    
+    height: 60px;
+    width: 340px;
     border-radius: 3px;
     background: $card-bgColor;
     padding: 10px 5px;
@@ -9,7 +11,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     cursor: pointer;
 
     .leftInfo,
@@ -17,30 +19,33 @@
     .rightInfo {
         
         flex: 1;
-        padding: 0 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
 
     .leftInfo {
+        padding-left: 20px;
         h4.cityName {
             color: $card-mainColor;
             margin: 0;
+            font-size: 18px;
+            width: 100%;
+            
         }
 
         p.cityDate {
             color: $card-subColor;
             margin: 0;
             font-size: 12px;
+            width: 100%;
+            
         }
     }
 
     .midInfo {
-        flex: 2;
-        margin: 0 10px;
-        padding: 0 20px;
         position: relative;
 
         .temperatureDegree,
@@ -48,13 +53,13 @@
             font-size: 14px;
             color: $card-subColor;
             position: absolute;
-            top: 0px;
-            right: 0px;
+            top: 7px;
+            right: 15px;
         }
 
         .temperatureDegree {
-            top: 3px;
-            right: 8px;
+            top: 10px;
+            right: 23px;
         }
 
         h4.cityTemp {
@@ -89,4 +94,53 @@
             flex-direction: row;
         }
     }
+}
+
+
+@include mobile {
+    .WeatherCard {
+        height: 40px;
+        width: 250px;
+
+        .leftInfo {
+            h4.cityName {
+                font-size: 12px;
+            }
+    
+            p.cityDate {
+                font-size: 10px;
+            }
+        }
+
+        .midInfo {
+    
+            .temperatureDegree,
+            .temperatureMark {
+                top: 0px;
+                right: 10px;
+            }
+    
+            .temperatureDegree {
+                top: 0px;
+                right: 18px;
+            }
+    
+            h4.cityTemp {
+                font-size: 21px;
+            }
+        }
+
+        .rightInfo {
+
+            p.cityHumidity {
+                font-size: 10px;
+            }
+    
+            p.cityWind {
+                font-size: 10px;
+            }
+        }
+    }
+
+    
 }

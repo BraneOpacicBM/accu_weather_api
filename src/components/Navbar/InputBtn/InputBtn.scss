@@ -1,4 +1,5 @@
 @import '../../../partials/variables';
+@import '../../../partials/mixins';
 
 .InputBtn {
     background: $input-btnColor;
@@ -26,5 +27,31 @@
             cursor: pointer;
             top: -2px;
         }
+    }
+}
+
+@include tablet {
+
+    .inputHolder {
+        justify-content: space-evenly;
+    }
+
+    .InputBtn {
+        width: 45%;
+        box-sizing: border-box;
+        margin: 5px 2px;
+    }
+}
+
+@include mobile {
+
+    .inputHolder {
+        justify-content: space-evenly;
+    }
+
+    .InputBtn {
+        width: 90%;
+        box-sizing: border-box;
+        margin: 5px 2px;
     }
 }
