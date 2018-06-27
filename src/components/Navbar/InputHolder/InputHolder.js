@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InputField from '../InputField/InputField';
 import InputBtn from '../InputBtn/InputBtn';
-import { asyncCityWeather } from '../../../store/actions/actions';
+import { asyncCityWeather, deleteCityFromBase } from '../../../store/actions/actions';
 import './InputHolder.scss';
 
 
@@ -34,6 +34,10 @@ class InputHolder extends Component {
         }
     }
 
+    deleteBtnHandler = (cityId) => {
+        this.props.deleteCity(cityId)
+    }
+
 
     render() {
 
@@ -43,7 +47,8 @@ class InputHolder extends Component {
 
         if(data.length > 0) {
             cityBtns =  data.map(city => {
-                return <InputBtn 
+                return <InputBtn
+                deleteBtn = {() => this.deleteBtnHandler(city.id)} 
                 cityName={city.name} 
                 id={city.id} 
                 key={city.id}/>
@@ -73,7 +78,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCityWeather: (cities) => dispatch(asyncCityWeather(cities))
+        getCityWeather: (cities) => dispatch(asyncCityWeather(cities)),
+        deleteCity: (id) => dispatch(deleteCityFromBase(id))
     }
 }
 

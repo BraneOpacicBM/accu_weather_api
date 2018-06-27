@@ -41,3 +41,10 @@ export const asyncCityWeather = (cities) => {
  
     }
 }
+
+export const deleteCityFromBase = (cityId) => {
+    return {
+        type: 'DELETE_CITY_FROM_BASE',
+        cityId: cityId
+    }
+}
