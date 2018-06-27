@@ -1,4 +1,5 @@
 @import '../../partials/variables';
+@import '../../partials/mixins';
 
 .DetailedView {
     display: flex;
@@ -69,4 +70,19 @@
             }
         }
     }
+}
+
+
+@include mobile {
+
+    .DetailedView {
+        .FiveDaysForecast {
+            .eachDayHolder {
+                .eachDay {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    
 }
