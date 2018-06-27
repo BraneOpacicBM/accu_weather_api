@@ -79,9 +79,9 @@ class DetailedView extends Component {
             return(
                 <div className="DetailedView">
                     <div className="CenteredCard">
-                        <DisplayInfo info={cityInfo.cityData.city.name} name />
-                        <DisplayInfo info={cityInfo.cityData.city.country} country />
-                        <DisplayInfo info={population} country />
+                        <DisplayInfo info={cityInfo.cityData.city.name} name entityInfo="city"/>
+                        <DisplayInfo info={cityInfo.cityData.city.country} country entityInfo="country" />
+                        <DisplayInfo info={population} entityInfo="population" />
                         <div className="FiveDaysForecast">
                             <h3 className="FiveDaysHeading">Next five days average forecast:</h3>
                             <div className="eachDayHolder">
