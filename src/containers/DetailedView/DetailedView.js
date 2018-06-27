@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Spinner from '../../components/Spinner/Spinner';
+import EachDayTemp from '../../components/EachDayTemp/EachDayTemp';
 import './DetailedView.scss';
 
 class DetailedView extends Component {
@@ -14,6 +16,31 @@ class DetailedView extends Component {
         })
     }
 
+    fnum = (x) => {
+        if(isNaN(x)) return x;
+    
+        if(x < 9999) {
+            return x;
+        }
+    
+        if(x < 1000000) {
+            return Math.round(x/1000) + "K";
+        }
+        if( x < 10000000) {
+            return (x/1000000).toFixed(2) + "M";
+        }
+    
+        if(x < 1000000000) {
+            return Math.round((x/1000000)) + "M";
+        }
+    
+        if(x < 1000000000000) {
+            return Math.round((x/1000000000)) + "B";
+        }
+    
+        return "1T+";
+    }
+
     ktc = kelvin => {
         let celsius = kelvin - 273.15;
         return Math.floor(celsius);
@@ -25,26 +52,55 @@ class DetailedView extends Component {
         
         if(this.state.cityInfo !== null) {
             const cityInfo = this.state.cityInfo;
+            const population = this.fnum(cityInfo.cityData.city.population);
+
+            const dayData = [];
+            for (let i = 0; i <= 39; i+=8) {
+            dayData.push(cityInfo.cityData.list.slice(i, i + 8));
+            }
+            const averageTempCombined = [];
+            dayData.map(dayDataElement => {
+                return dayDataElement.map(dayByHours => {
+                    return averageTempCombined.push(this.ktc(dayByHours.main.temp))
+                })
+            })
+            const averageTempSliced = []
+            for (let i = 0; i <= 39; i+=8) {
+                averageTempSliced.push(averageTempCombined.slice(i, i + 8));
+                }
+            let fiveDayForecast = averageTempSliced.map((temp, i) => {
+                const temperature = Math.floor(temp.reduce(this.reducer) / 8) 
+                return <EachDayTemp temp={temperature} key={i}/>
+            })
+
+
+
             return(
                 <div className="DetailedView">
                     <div className="CenteredCard">
                         <div className="DisplayInfo">
                             <span className="DisplayInfoEntity">city:</span>
-                            <span className="DisplayInfoResult">{cityInfo.cityData.city.name}</span>
+                            <span className="DisplayInfoResult CityName">{cityInfo.cityData.city.name}</span>
                         </div>
                         <div className="DisplayInfo">
                             <span className="DisplayInfoEntity">country:</span>
-                            <span className="DisplayInfoResult">{cityInfo.cityData.city.country}</span>
+                            <span className="DisplayInfoResult CountryName">{cityInfo.cityData.city.country}</span>
                         </div>
                         <div className="DisplayInfo">
                             <span className="DisplayInfoEntity">population:</span>
-                            <span className="DisplayInfoResult">{cityInfo.cityData.city.population}</span>
+                            <span className="DisplayInfoResult">{population}</span>
+                        </div>
+                        <div className="FiveDaysForecast">
+                            <h3 className="FiveDaysHeading">Next five days average forecast:</h3>
+                            <div className="eachDayHolder">
+                                {fiveDayForecast}
+                            </div>
                         </div>
                     </div>
                 </div>
             )
         } else {
-            return <h1>Spinner</h1>
+            return <Spinner />
         }
     }
 }
