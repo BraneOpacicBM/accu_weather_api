@@ -3,7 +3,7 @@ import './WeatherCard.scss';
 
 const WeatherCard = (props) => {
     return (
-        <div className="WeatherCard">
+        <div className="WeatherCard" onClick={props.detailedView}>
             <div className="leftInfo">
                 <h4 className="cityName">{props.name}</h4>
                 <p className="cityDate">{props.date}</p>

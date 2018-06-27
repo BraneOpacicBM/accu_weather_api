@@ -1,0 +1,72 @@
+@import '../../partials/variables';
+
+.DetailedView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .CenteredCard {
+        padding: 20px;
+        border: 2px solid $navbar-color;
+        border-radius: 10px;
+        background: #9f9f9f;
+
+        h3.FiveDaysHeading {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    .DisplayInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .DisplayInfoEntity {
+            color: rgba(255, 255, 255, 1);
+            font-size: 14px;
+        }
+
+        .DisplayInfoResult {
+            font-size: 20px;
+        }
+
+        .DisplayInfoResult.CityName {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .DisplayInfoResult.CountryName {
+            color: #cf6767;
+        }
+    }
+
+    
+
+    .FiveDaysForecast {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+
+        .eachDayHolder {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+
+            .eachDay {
+                padding: 5px;
+                margin: 2px 2px;
+                border: 2px solid rgba(255, 255, 255, 1);
+                border-radius: 10px;
+                font-size: 16px;
+                color: rgba(255, 255, 255, 1);
+            }
+        }
+    }
+}
