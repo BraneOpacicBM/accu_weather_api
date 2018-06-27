@@ -1,0 +1,11 @@
+.DetailedView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .CenteredCard {
+        padding: 20px;
+        border: 2px solid purple;
+    }
+}

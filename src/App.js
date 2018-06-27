@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar/Navbar';
-import MainArea from './components/MainArea/MainArea';
+import { Switch, Route } from 'react-router-dom';
+import MainSection from './containers/MainSection/MainSection';
+import DetailedView from './containers/DetailedView/DetailedView';
 import './App.scss';
 
 class App extends Component {
-
   render() {
     return (
-      <div className="App">
-        <Navbar />
-        <MainArea />
-      </div>
+        <div className="App">
+            <Switch>
+              <Route path="/" exact render={() => <MainSection />} />
+              <Route path="/detailedView" render={() => <DetailedView />} />
+            </Switch>
+        </div>
     );
   }
 }

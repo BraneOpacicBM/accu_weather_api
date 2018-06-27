@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import WeatherCard from './WeatherCard/WeatherCard';
 import './MainArea.scss';
 import { asyncCityWeatherDetailed } from '../../store/actions/actions';
@@ -47,17 +48,18 @@ class MainArea extends Component {
         let weatherCard = null;
         if(this.props.data.length > 0) {
             weatherCard = this.props.data.map((cityInfo, i) => {
-                return <WeatherCard 
-                name={cityInfo.name} 
-                key={i}
-                description={cityInfo.weather[0].description}
-                wind={cityInfo.wind.speed}
-                humidity={cityInfo.main.humidity}
-                temp={this.ktc(cityInfo.main.temp)}
-                date={this.dateRender(new Date(cityInfo.dt))} 
-                id={cityInfo.id}
-                detailedView={() => this.getDetailedViewHandler(cityInfo.name)}
-                />
+                return <NavLink exact to={"/detailedView/" + cityInfo.name} key={i} style={{ textDecoration: 'none' }}>
+                        <WeatherCard 
+                        name={cityInfo.name} 
+                        description={cityInfo.weather[0].description}
+                        wind={cityInfo.wind.speed}
+                        humidity={cityInfo.main.humidity}
+                        temp={this.ktc(cityInfo.main.temp)}
+                        date={this.dateRender(new Date(cityInfo.dt))} 
+                        id={cityInfo.id}
+                        detailedView={() => this.getDetailedViewHandler(cityInfo.name)}
+                        />
+                    </NavLink>
             })
         }
 
