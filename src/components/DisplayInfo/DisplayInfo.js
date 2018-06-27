@@ -12,7 +12,7 @@ const DisplayInfo = (props) => {
 
     return (
         <div className="DisplayInfo">
-            <span className="DisplayInfoEntity">city:</span>
+            <span className="DisplayInfoEntity">{props.entityInfo}:</span>
             <span className={classSet.join(" ")}>{props.info}</span>
         </div>
     )
