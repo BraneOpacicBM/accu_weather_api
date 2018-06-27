@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Spinner from '../../components/Spinner/Spinner';
 import EachDayTemp from '../../components/EachDayTemp/EachDayTemp';
 import './DetailedView.scss';
+import DisplayInfo from '../../components/DisplayInfo/DisplayInfo';
 
 class DetailedView extends Component {
 
@@ -78,18 +79,9 @@ class DetailedView extends Component {
             return(
                 <div className="DetailedView">
                     <div className="CenteredCard">
-                        <div className="DisplayInfo">
-                            <span className="DisplayInfoEntity">city:</span>
-                            <span className="DisplayInfoResult CityName">{cityInfo.cityData.city.name}</span>
-                        </div>
-                        <div className="DisplayInfo">
-                            <span className="DisplayInfoEntity">country:</span>
-                            <span className="DisplayInfoResult CountryName">{cityInfo.cityData.city.country}</span>
-                        </div>
-                        <div className="DisplayInfo">
-                            <span className="DisplayInfoEntity">population:</span>
-                            <span className="DisplayInfoResult">{population}</span>
-                        </div>
+                        <DisplayInfo info={cityInfo.cityData.city.name} name />
+                        <DisplayInfo info={cityInfo.cityData.city.country} country />
+                        <DisplayInfo info={population} country />
                         <div className="FiveDaysForecast">
                             <h3 className="FiveDaysHeading">Next five days average forecast:</h3>
                             <div className="eachDayHolder">
