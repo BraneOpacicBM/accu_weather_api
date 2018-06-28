@@ -102,7 +102,8 @@ class DetailedView extends Component {
 
 const mapStateToProps = state => {
     return {
-        cityData: state.detailedCityData
+        cityData: state.detailedCityData,
+        cityNotFound: state.cityNotFound
     }
 }
 
