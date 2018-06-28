@@ -57,9 +57,7 @@ class InputHolder extends Component {
 
         return (
             <div className="InputHolder">
-                <div className="btnWrapper">
-                    {cityBtns}
-                </div>
+                {cityBtns}
                 <InputField 
                 submitForm={this.formHandler}
                 inputValue={this.state.inputValue}

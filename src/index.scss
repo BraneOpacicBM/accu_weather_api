@@ -6,6 +6,7 @@ body {
   font-family: $font-stack;
   background: $main-sectionColor;
   height: 100vh;
+  overflow-x: hidden;
 
   > * {
     height: 100%;
