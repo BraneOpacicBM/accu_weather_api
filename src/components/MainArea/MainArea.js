@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import WeatherCard from './WeatherCard/WeatherCard';
+import { asyncCityWeatherDetailed, removeCityNotFound } from '../../store/actions/actions';
 import './MainArea.scss';
-import { asyncCityWeatherDetailed } from '../../store/actions/actions';
 
 class MainArea extends Component {
 
@@ -12,10 +14,14 @@ class MainArea extends Component {
         this.props.cityWeatherDetailed(cityName);
     }
 
-     ktc = kelvin => {
-        let celsius = kelvin - 273.15;
-        return Math.floor(celsius);
-      }
+    ktc = kelvin => {
+    let celsius = kelvin - 273.15;
+    return Math.floor(celsius);
+    }
+
+    cityNotFoundHandler = () => {
+        this.props.removeCityNotFound()
+    }
       
 
     dateRender = (date) => {
@@ -45,6 +51,11 @@ class MainArea extends Component {
 
     render() {
 
+        let cityNotFound = null;
+
+        if(this.props.cityNotFound) {
+            cityNotFound = <div className="CityNotFound" onClick={this.cityNotFoundHandler}>City not found!<span><FontAwesomeIcon icon={faTimes}/></span></div>
+        }
         let weatherCard = null;
         if(this.props.data.length > 0) {
             weatherCard = this.props.data.map((cityInfo, i) => {
@@ -65,7 +76,8 @@ class MainArea extends Component {
 
         return (
             <div className="MainArea">
-                {weatherCard}
+                {cityNotFound}
+                <div className="WeatherCardWrapper">{weatherCard}</div>
             </div>
         )
     }
@@ -73,13 +85,15 @@ class MainArea extends Component {
 
 const mapStateToProps = state => {
     return {
-        data: state.data
+        data: state.data,
+        cityNotFound: state.cityNotFound
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        cityWeatherDetailed: (cityName) => dispatch(asyncCityWeatherDetailed(cityName))
+        cityWeatherDetailed: (cityName) => dispatch(asyncCityWeatherDetailed(cityName)),
+        removeCityNotFound: () => dispatch(removeCityNotFound())
     }
 }
 

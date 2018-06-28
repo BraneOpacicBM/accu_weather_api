@@ -1,6 +1,7 @@
 const initialState = {
     data: [],
-    detailedCityData: []
+    detailedCityData: [],
+    cityNotFound: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +34,20 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 detailedCityData: action.city
+            }
+
+        case 'CITY_NOT_FOUND':
+
+            return {
+                ...state,
+                cityNotFound: true
+            }
+
+        case 'REMOVE_CITY_NOT_FOUND':
+
+            return {
+                ...state,
+                cityNotFound: false
             }
 
         default:
