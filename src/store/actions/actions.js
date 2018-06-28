@@ -12,6 +12,18 @@ export const cityWeatherDetailed = (city) => {
     }
 }
 
+export const cityNotFound = () => {
+    return {
+        type: 'CITY_NOT_FOUND'
+    }
+} 
+
+export const removeCityNotFound = () => {
+    return {
+        type: 'REMOVE_CITY_NOT_FOUND'
+    }
+} 
+
 
 
 export const asyncCityWeather = (cities) => {
@@ -24,7 +36,7 @@ export const asyncCityWeather = (cities) => {
                     .then(response => {
                         return response.json()
                     })
-                    .catch(err => alert(err))
+                    
         }
 
             let promises = [];
@@ -39,11 +51,13 @@ export const asyncCityWeather = (cities) => {
                 for(let i = 0; i < promises.length; i++){
                     if(cities[i].cod !== "404") {
                         dispatch(cityWeather(cities[i]))
-                    }   
+                    } else {
+                        dispatch(cityNotFound())
+                    }  
                 }
             })
             .catch((e) => {
-                // handle errors here
+                console.log(e)
             });
  
     }
@@ -59,7 +73,7 @@ export const asyncCityWeatherDetailed = (city) => {
         .then(parsedRes => {
             dispatch(cityWeatherDetailed(parsedRes))
         })
-        .catch(err => console.log(err))
+        .catch(err => alert(err))
     }
 }
 

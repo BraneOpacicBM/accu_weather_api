@@ -5,6 +5,8 @@ import DetailedView from './containers/DetailedView/DetailedView';
 import './App.scss';
 
 class App extends Component {
+
+
   render() {
     return (
         <div className="App">
